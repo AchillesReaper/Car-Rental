@@ -1,0 +1,25 @@
+
+#carDisplay{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+
+.carInstance{
+    display: table;
+    width: 250px;
+    height: 380px;
+    margin: 10px;
+    box-shadow: 2px 2px 2px 2px navy
+}
+
+
+.carImage{
+    object-position: center;
+    max-width: 250px;
+    max-height: 150px;
+    align-items: center;
+
+}
