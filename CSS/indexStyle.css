@@ -1,13 +1,9 @@
-
 #carDisplay{
     display: flex;
     flex-wrap: wrap;
-
 }
 
-
-
-.carInstance{
+.carObject{
     display: table;
     width: 250px;
     height: 380px;
@@ -15,11 +11,9 @@
     box-shadow: 2px 2px 2px 2px navy
 }
 
-
-.carImage{
+.carImg{
     object-position: center;
     max-width: 250px;
     max-height: 150px;
     align-items: center;
-
 }
