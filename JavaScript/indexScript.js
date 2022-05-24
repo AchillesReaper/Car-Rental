@@ -1,6 +1,3 @@
-// function fetchCarDataForDisplay(){
-//     console.log("function 1 works")
-// }
 
 function fetchCarDataForDisplay(){
     let carObjects;
@@ -45,12 +42,12 @@ function checkAvailability(carIDArg){
         if (this.readyState == 4 && this.status == 200){
             const carDisplay = document.getElementById("carDisplay");
             carObjects = JSON.parse(xhttp.responseText);
+            let addToCart = true;
             for (let i in carObjects){
                 if (carObjects[i].carID == carIDArg){
                     if (carObjects[i].Availability == false){
                         alert("Sorry, this car is not available");
                     }else if(cartItem.length > 0){
-                        var addToCart = true;
                         for (let x in cartItem){
                             if (cartItem[x].carID == carIDArg){
                                 addToCart = false;
@@ -58,22 +55,14 @@ function checkAvailability(carIDArg){
                                 break;
                             }
                         }
-                        if (addToCart == true) {
-                            cartItem.push(carObjects[i]);
-                            let updatedCartItem = JSON.stringify(cartItem);
-                            sessionStorage.setItem("cartItem", updatedCartItem);
-                            alert("Add to cart successfully!");
-                        }
-                        
-                    }else{
+                    };
+                    if (addToCart == true) {
                         cartItem.push(carObjects[i]);
                         let updatedCartItem = JSON.stringify(cartItem);
                         sessionStorage.setItem("cartItem", updatedCartItem);
                         alert("Add to cart successfully!");
                     }
-                    
                 }
-                ;
             };
         };
         let text = sessionStorage.getItem("cartItem");
