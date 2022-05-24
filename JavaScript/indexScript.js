@@ -3,8 +3,8 @@
 // }
 
 function fetchCarDataForDisplay(){
-    var carObjects;
-    var xhttp = new XMLHttpRequest();
+    let carObjects;
+    let xhttp = new XMLHttpRequest();
     xhttp.overrideMimeType("application/json");
     xhttp.open("GET","./JavaScript/cars.json", true);
     xhttp.onreadystatechange = function(){
@@ -35,17 +35,13 @@ function fetchCarDataForDisplay(){
 };
 
 var cartItem = [];
-// function checkAvailability(carIDArg){
-//     console.log(carIDArg)
-// }
 
 function checkAvailability(carIDArg){
-    var carObjects;
-    var xhttp = new XMLHttpRequest();
+    let carObjects;
+    let xhttp = new XMLHttpRequest();
     xhttp.overrideMimeType("application/json");
     xhttp.open("GET","./JavaScript/cars.json", true);
     xhttp.onreadystatechange = function(){
-        console.log("data loaded")
         if (this.readyState == 4 && this.status == 200){
             const carDisplay = document.getElementById("carDisplay");
             carObjects = JSON.parse(xhttp.responseText);
@@ -56,30 +52,33 @@ function checkAvailability(carIDArg){
                     }else if(cartItem.length > 0){
                         var addToCart = true;
                         for (let x in cartItem){
-                            if (cartItem[x].carID = carIDArg){
+                            if (cartItem[x].carID == carIDArg){
                                 addToCart = false;
                                 alert("This car is in your cart already");
                                 break;
                             }
                         }
-                        if (addToCart) {
-                            cartItem += carObjects[i];
-                            sessionStorage.setItem("cartItem", cartItem);
+                        if (addToCart == true) {
+                            cartItem.push(carObjects[i]);
+                            let updatedCartItem = JSON.stringify(cartItem);
+                            sessionStorage.setItem("cartItem", updatedCartItem);
                             alert("Add to cart successfully!");
                         }
                         
                     }else{
-                        cartItem += carObjects[i];
-                        sessionStorage.setItem("cartItem", cartItem);
+                        cartItem.push(carObjects[i]);
+                        let updatedCartItem = JSON.stringify(cartItem);
+                        sessionStorage.setItem("cartItem", updatedCartItem);
                         alert("Add to cart successfully!");
                     }
-                    break;
+                    
                 }
                 ;
             };
         };
+        let text = sessionStorage.getItem("cartItem");
+        console.log(text)
     };
     xhttp.send();
-    let c = sessionStorage.getItem("cartItem");
-    console.log(c);
+    
 }
