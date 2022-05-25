@@ -6,7 +6,7 @@ function loadDoc(){
     console.log(rsvDetail);
     console.log(totalPrice);
 
-    const ptyCfmText = "A total payment of $"+ totalPrice + " is received via "+ cstmInfo.ptyMethod;
+    const ptyCfmText = "A total payment of <b>$"+ totalPrice + "</b> is received via "+ cstmInfo.ptyMethod;
     
     const emailText =  "Detailed terms and condition will sent to <b>" + cstmInfo.cstmEmail + "</b> shortly.";
 

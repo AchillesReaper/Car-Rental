@@ -24,7 +24,7 @@ function readSession(){
                 <td><img class="carThumbnail" src="carImages/${cartItem[i].Model}.jpeg"/></td>
                 <td>${cartItem[i].Brand} - ${cartItem[i].Model} - ${cartItem[i].ModelYear}</td>
                 <td>${cartItem[i].Price_per_day}</td>
-                <td><input type="number" min="1" class="days" value="1"></td>
+                <td><input type="number" min="0" class="days" value="1"></td>
                 <td><button onClick="removeCartItem('${cartItem[i].carID}')">Delete</td>
             </tr>
             `;
@@ -64,8 +64,14 @@ function pcdCheckOut() {
 
     let totalPrice = 0;
     let rsvDetail = [];
+    let dayValidation = true;
 
     for (let i in cartItem){
+        if (dayArr[i].value < 1){
+            dayValidation = false;
+            alert("Rental duration cannot be less than 1 day.")
+            break;
+        }
         totalPrice += parseInt(dayArr[i].value)*parseInt(cartItem[i].Price_per_day);
         let rsvItem = {};
         rsvItem.carID = cartItem[i].carID;
@@ -73,13 +79,14 @@ function pcdCheckOut() {
         rsvItem.Price_per_day = cartItem[i].Price_per_day;
         rsvItem.rentalDays = dayArr[i].value;
         rsvDetail.push(rsvItem);
-    }
+    };
 
     //store total price to session totalPrice
-    sessionStorage.setItem("totalPrice", totalPrice);
-    let rsvDetailJ = JSON.stringify(rsvDetail);
-    sessionStorage.setItem("rsvDetail", rsvDetailJ);
-    window.location.href ="./checkOut.html"
-
-
+    if (dayValidation == true) {
+        sessionStorage.setItem("totalPrice", totalPrice);
+        let rsvDetailJ = JSON.stringify(rsvDetail);
+        sessionStorage.setItem("rsvDetail", rsvDetailJ);
+        window.location.href ="./checkOut.html"
+    }
+    
 }
