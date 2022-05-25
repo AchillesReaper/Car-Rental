@@ -34,17 +34,9 @@ function readSession(){
             priceArr.push(cartItem[i].Price_per_day);
         };
 
-        idArray = JSON.stringify(idArr);
-        console.log(idArray);
-        desArray = JSON.stringify(desArr);
-        console.log(desArray);
-        priceArray = JSON.stringify(priceArr);
-        console.log(priceArray);
-        
-
         document.getElementById("cartItemTable").innerHTML += `
         <tr><td>
-            <button onclick="pcdCheckOut(${idArray},${desArray},${priceArray})">Proceeding to CheckOut</button>
+            <button onclick="pcdCheckOut()">Proceeding to CheckOut</button>
         </td></tr>
         `;
     }
@@ -66,31 +58,28 @@ function removeCartItem(carIDArg){
     readSession();
 }
 
-function pcdCheckOut(idArrayJ, desArrayJ, priceArrayJ) {
-    console.log(idArrayJ);
-    let idArr = JSON.parse(idArrayJ);
-    let desArr = JSON.parse(desArrayJ);
-    let priceArr = JSON.parse(priceArrayJ);
+function pcdCheckOut() {
+    let cartItem = JSON.parse(sessionStorage.getItem("cartItem"));
     let dayArr = document.getElementsByClassName("days");
-    //prepare to create checkout items
-    let checkOutItems = [];
-    //calculate total price
+
     let totalPrice = 0;
-    
-    for (let i = 0; i < dayArr.length; i++){
-        totalPrice += parseInt(dayArr[i].value)*priceArr[i];
-        let checkOutItem = {};
-        checkOutItem.id = idArr[i];
-        checkOutItem.des = desArr[i];
-        checkOutItem.price_per_day = priceArr[i];
-        checkOutItem.renting_days = dayArr[i].value;
-        checkOutItems.push(checkOutItem);
-    };
+    let rsvDetail = [];
+
+    for (let i in cartItem){
+        totalPrice += parseInt(dayArr[i].value)*parseInt(cartItem[i].Price_per_day);
+        let rsvItem = {};
+        rsvItem.carID = cartItem[i].carID;
+        rsvItem.des = cartItem[i].Brand + cartItem[i].Model + cartItem[i].ModelYear;
+        rsvItem.Price_per_day = cartItem[i].Price_per_day;
+        rsvItem.rentalDays = dayArr[i].value;
+        rsvDetail.push(rsvItem);
+    }
+
     //store total price to session totalPrice
     sessionStorage.setItem("totalPrice", totalPrice);
-    console.log(totalPrice);
-    sessionStorage.setItem("checkOutItems", checkOutItems)
-    // window.location.href ="./checkOut.html"
+    let rsvDetailJ = JSON.stringify(rsvDetail);
+    sessionStorage.setItem("rsvDetail", rsvDetailJ);
+    window.location.href ="./checkOut.html"
 
 
 }
