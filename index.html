@@ -6,19 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="./JavaScript/indexScript.js"></script>
     <link rel="stylesheet" href="./CSS/indexStyle.css">
-    <nav>
-        <h1>Hertz-UTS</h1>
-        <h1>Car Retal Center</h1>
-        <button onclick="goCarReservation()">Car Reservation</a></button>
-    </nav>
+    
     
 </head>
 
 
 <body onload="fetchCarDataForDisplay()">
-    <div id="sessionContent"></div>
+    <div id="header">
+        <div><h1>Hertz-UTS</h1></div>
+        <div><h1>Car Retal Center</h1></div>
+        <div><button id="carReservation" onclick="goCarReservation()"><h3>Car Reservation</h3></button> </div>
+        
+    </div>
+    <!-- <div id="sessionContent"></div> -->
     <div id="carDisplay">
 
+    </div>
+    <div id="footer">
+        This website is created by Hin @ 2022.
     </div>
 
 </body>

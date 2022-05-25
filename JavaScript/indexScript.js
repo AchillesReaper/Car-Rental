@@ -1,4 +1,3 @@
-
 function fetchCarDataForDisplay(){
     let carObjects;
     let xhttp = new XMLHttpRequest();
@@ -13,17 +12,20 @@ function fetchCarDataForDisplay(){
                 // let idString = String(carObjects[i].carID);
                 carDisplay.innerHTML += `
                 <div class="carObject">
-                    <div><img class="carImg" src="./carImages/${carObjects[i].Model}.jpeg"/></div>
-                    <div>${carObjects[i].Brand} - ${carObjects[i].Model} - ${carObjects[i].ModelYear}</div>
-                    <div>  <b>Mileage:</b>   ${carObjects[i].Mileage}</div>
-                    <div>  <b>Fuel Type:</b> ${carObjects[i].FuelType}</div>
-                    <div>  <b>Seat:</b>      ${carObjects[i].Seats}</div>
-                    <div>  <b>Price per day:</b> ${carObjects[i].Price_per_day}</div>
-                    <div>  <b>Availability:</b>  ${carObjects[i].Availability}</div>
-                    <div>  <b>Description:</b>   ${carObjects[i].Description}</div><div></div>
-                    <div> 
-                        <button class="addToCartBtn" onClick="checkAvailability('${carObjects[i].carID}')">Add to cart</button>
-                    </div>
+                
+                    <div class="imgContainer"><img class="carImg" src="./carImages/${carObjects[i].Model}.jpeg"/></div>
+                    <div class="carDes">
+                        <div><b>${carObjects[i].Brand} - ${carObjects[i].Model} - ${carObjects[i].ModelYear}</b></div>
+                        <div>  <b>Mileage:</b>   ${carObjects[i].Mileage}</div>
+                        <div>  <b>Fuel Type:</b> ${carObjects[i].FuelType}</div>
+                        <div>  <b>Seat:</b>      ${carObjects[i].Seats}</div>
+                        <div>  <b>Price per day:</b> ${carObjects[i].Price_per_day}</div>
+                        <div>  <b>Availability:</b>  ${carObjects[i].Availability}</div>
+                        <div>  <b>Description:</b>   ${carObjects[i].Description}</div><div></div><br>
+                        <div class="btnContainer"> 
+                            <button class="addToCartBtn" onClick="checkAvailability('${carObjects[i].carID}')">Add to cart</button>
+                        </div>
+                    </div>    
                 </div>
                 `;
                 

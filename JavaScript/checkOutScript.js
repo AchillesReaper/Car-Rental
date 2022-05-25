@@ -1,6 +1,7 @@
 function getCheckOutPrice(){
     let checkOutPrice = sessionStorage.getItem("totalPrice");
-    document.getElementById("checkOutPrice").innerHTML = checkOutPrice;
+    let text = "You are required to pay $"+checkOutPrice;
+    document.getElementById("checkOutPrice").innerHTML = text;
     console.log(checkOutPrice)
 }
 

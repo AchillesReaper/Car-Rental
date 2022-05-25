@@ -9,7 +9,7 @@ function readSession(){
         alert("No car has been reserved.")
         window.location.href = "index.html"
     }else{
-        document.getElementById("cartItemTable").innerHTML = `
+        document.getElementById("cartItemTable").innerHTML += `
         <tr>
             <td><b>Thumbnail</b></td>
             <td><b>Vehicle</b></td>
@@ -34,10 +34,11 @@ function readSession(){
             priceArr.push(cartItem[i].Price_per_day);
         };
 
-        document.getElementById("cartItemTable").innerHTML += `
-        <tr><td>
+        document.getElementById("cartItemTable").innerHTML +=`
+        <tr><td colspan="5"><nav id="navBtn">    
+            <button onclick="backToHome()">back to Home</button>
             <button onclick="pcdCheckOut()">Proceeding to CheckOut</button>
-        </td></tr>
+        </nav></td></tr>
         `;
     }
     
@@ -89,4 +90,8 @@ function pcdCheckOut() {
         window.location.href ="./checkOut.html"
     }
     
+}
+
+function backToHome(){
+    window.location.href = "./index.html"
 }

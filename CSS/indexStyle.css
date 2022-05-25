@@ -1,3 +1,28 @@
+body{
+    background-color: rgb(94, 186, 162);
+}
+
+#header{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: rgb(56, 10, 10);
+    color: #c2c6cd;
+	font-family: Comic Sans MS;
+	font-size: 14px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5)
+ }
+
+#carReservation{
+    border-radius: 20px;
+    box-shadow: 0px 0px 2px 2px rgb(117, 128, 0)  
+}
+
 #carDisplay{
     display: flex;
     flex-wrap: wrap;
@@ -8,12 +33,42 @@
     width: 250px;
     height: 380px;
     margin: 10px;
-    box-shadow: 2px 2px 2px 2px navy
+    box-shadow: 2px 2px 2px 2px rgb(42, 42, 65);
+    background-color: rgb(86, 141, 59)  
+}
+
+.imgContainer{
+    display: flex;
+    justify-content: center;
 }
 
 .carImg{
-    object-position: center;
     max-width: 250px;
     max-height: 150px;
-    align-items: center;
+}
+
+.carDes{
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btnContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#footer{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: rgb(56, 10, 10);
+    color: #c2c6cd;
+	font-family: Comic Sans MS;
+	font-size: 14px;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
 }
