@@ -9,10 +9,8 @@ function fetchCarDataForDisplay(){
             carObjects = JSON.parse(xhttp.responseText);
             console.log(carObjects);
             for (let i in carObjects){
-                // let idString = String(carObjects[i].carID);
                 carDisplay.innerHTML += `
                 <div class="carObject">
-                
                     <div class="imgContainer"><img class="carImg" src="./carImages/${carObjects[i].Model}.jpeg"/></div>
                     <div class="carDes">
                         <div><b>${carObjects[i].Brand} - ${carObjects[i].Model} - ${carObjects[i].ModelYear}</b></div>
@@ -77,14 +75,9 @@ function checkAvailability(carIDArg){
 
 function goCarReservation(){
     let carReserved = JSON.parse(sessionStorage.getItem("cartItem"));
-    // console.log(carReserved.length);
-    // console.log(carReserved);
     if (carReserved[0] != null ){
         window.location.href = "./cart.html";
     }else{
         alert("No car has been reserved.")
     }
-    // if (carReserved[0] == null){
-    //     alert("No car has been reserved.")
-    // }
 }

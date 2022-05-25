@@ -15,13 +15,12 @@ function loadDoc(){
 
     document.getElementById("rsvDetail").innerHTML = `
     <tr>
-        <td><b>Car Description</b></td>
-        <td><b>Price per Day</b></td>
-        <td><b>Rental Days</b></td>        
+        <td><b><u>Car Description</u></b></td>
+        <td><b><u>Price per Day</u></b></td>
+        <td><b><u>Rental Days</u></b></td>        
     </tr>`;
 
     for (let i in rsvDetail){
-        console.log(i);
         document.getElementById("rsvDetail").innerHTML += `
         <tr>
             <td>${rsvDetail[i].des}</td>

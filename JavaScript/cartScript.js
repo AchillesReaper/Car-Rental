@@ -4,7 +4,7 @@ function readSession(){
     let priceArr=[];
     let idArr=[];
     let desArr=[];
-
+    //check if "cartItem" in sessionStorage is empty. users may accidently visited this page, or simply deleted all cartItem manually.
     if (cartItem[0] == null){
         alert("No car has been reserved.")
         window.location.href = "index.html"
@@ -44,6 +44,7 @@ function readSession(){
     
 }
 
+//for customers delete selected car 
 function removeCartItem(carIDArg){
     let cartItem = JSON.parse(sessionStorage.getItem("cartItem"));
     //cartItem now is an array of car object
@@ -82,7 +83,7 @@ function pcdCheckOut() {
         rsvDetail.push(rsvItem);
     };
 
-    //store total price to session totalPrice
+    //store total price and final check out items to sessionStorage
     if (dayValidation == true) {
         sessionStorage.setItem("totalPrice", totalPrice);
         let rsvDetailJ = JSON.stringify(rsvDetail);

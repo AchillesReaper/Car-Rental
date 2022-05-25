@@ -5,6 +5,8 @@ function getCheckOutPrice(){
     console.log(checkOutPrice)
 }
 
+
+//validating the format of email address
 function emailValidation(){
     storeCstmInfo();
     let mAdd = document.forms["reservationForm"]["cstmEmail"].value;
@@ -15,6 +17,8 @@ function emailValidation(){
     }
 }
 
+
+//store customer information to sessionStorage
 function storeCstmInfo(){
     let cstmInfo = {};
 
