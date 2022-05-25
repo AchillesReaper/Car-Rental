@@ -35,12 +35,17 @@ function readSession(){
         };
 
         idArray = JSON.stringify(idArr);
+        console.log(idArray);
         desArray = JSON.stringify(desArr);
+        console.log(desArray);
         priceArray = JSON.stringify(priceArr);
+        console.log(priceArray);
         
 
         document.getElementById("cartItemTable").innerHTML += `
-        <tr><td><button onclick="pcdCheckOut('${idArray}','${desArray}','${priceArray}')">Proceeding to CheckOut</button></td></tr>
+        <tr><td>
+            <button onclick="pcdCheckOut(${idArray},${desArray},${priceArray})">Proceeding to CheckOut</button>
+        </td></tr>
         `;
     }
     
@@ -61,10 +66,11 @@ function removeCartItem(carIDArg){
     readSession();
 }
 
-function pcdCheckOut(idArray, desArray, priceArray) {
-    let idArr = JSON.parse(idArray);
-    let desArr = JSON.parse(desArray);
-    let priceArr = JSON.parse(priceArray);
+function pcdCheckOut(idArrayJ, desArrayJ, priceArrayJ) {
+    console.log(idArrayJ);
+    let idArr = JSON.parse(idArrayJ);
+    let desArr = JSON.parse(desArrayJ);
+    let priceArr = JSON.parse(priceArrayJ);
     let dayArr = document.getElementsByClassName("days");
     //prepare to create checkout items
     let checkOutItems = [];
@@ -74,16 +80,17 @@ function pcdCheckOut(idArray, desArray, priceArray) {
     for (let i = 0; i < dayArr.length; i++){
         totalPrice += parseInt(dayArr[i].value)*priceArr[i];
         let checkOutItem = {};
-        checkOutItem["id"] = idArr[i];
-        checkOutItem["des"] = desArr[i];
-        checkOutItem["price_per_day"] = priceArr[i];
-        checkOutItem["renting_days"] = dayArr[i].value;
+        checkOutItem.id = idArr[i];
+        checkOutItem.des = desArr[i];
+        checkOutItem.price_per_day = priceArr[i];
+        checkOutItem.renting_days = dayArr[i].value;
         checkOutItems.push(checkOutItem);
     };
     //store total price to session totalPrice
     sessionStorage.setItem("totalPrice", totalPrice);
+    console.log(totalPrice);
     sessionStorage.setItem("checkOutItems", checkOutItems)
-    window.location.href ="./checkOut.html"
+    // window.location.href ="./checkOut.html"
 
 
 }

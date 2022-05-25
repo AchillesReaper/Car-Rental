@@ -21,7 +21,9 @@ function fetchCarDataForDisplay(){
                     <div>  <b>Price per day:</b> ${carObjects[i].Price_per_day}</div>
                     <div>  <b>Availability:</b>  ${carObjects[i].Availability}</div>
                     <div>  <b>Description:</b>   ${carObjects[i].Description}</div><div></div>
-                    <div> <button class="addToCartBtn" onClick="checkAvailability('${carObjects[i].carID}')">Add to cart</button></div>
+                    <div> 
+                        <button class="addToCartBtn" onClick="checkAvailability('${carObjects[i].carID}')">Add to cart</button>
+                    </div>
                 </div>
                 `;
                 
