@@ -71,5 +71,18 @@ function checkAvailability(carIDArg){
         console.log(text)
     };
     xhttp.send();
-    
+}
+
+function goCarReservation(){
+    let carReserved = JSON.parse(sessionStorage.getItem("cartItem"));
+    // console.log(carReserved.length);
+    // console.log(carReserved);
+    if (carReserved[0] != null ){
+        window.location.href = "./cart.html";
+    }else{
+        alert("No car has been reserved.")
+    }
+    // if (carReserved[0] == null){
+    //     alert("No car has been reserved.")
+    // }
 }

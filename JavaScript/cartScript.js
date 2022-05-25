@@ -5,7 +5,7 @@ function readSession(){
     let idArr=[];
     let desArr=[];
 
-    if (cartItem.length < 1){
+    if (cartItem[0] == null){
         alert("No car has been reserved.")
         window.location.href = "index.html"
     }else{
