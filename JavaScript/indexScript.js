@@ -37,6 +37,7 @@ var cartItem = [];
 
 function checkAvailability(carIDArg){
     let carObjects;
+    let addToCart = true;
     let xhttp = new XMLHttpRequest();
     xhttp.overrideMimeType("application/json");
     xhttp.open("GET","./JavaScript/cars.json", true);
@@ -44,11 +45,12 @@ function checkAvailability(carIDArg){
         if (this.readyState == 4 && this.status == 200){
             const carDisplay = document.getElementById("carDisplay");
             carObjects = JSON.parse(xhttp.responseText);
-            let addToCart = true;
             for (let i in carObjects){
                 if (carObjects[i].carID == carIDArg){
                     if (carObjects[i].Availability == false){
+                        addToCart = false;
                         alert("Sorry, this car is not available");
+                        break;
                     }else if(cartItem.length > 0){
                         for (let x in cartItem){
                             if (cartItem[x].carID == carIDArg){
